@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KYD-login</title>
+
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      crossorigin="anonymous"
+    />
+  <link rel="stylesheet" href="stylesheets/login.css" />
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!--<script src="javascripts/login.js"></script>-->
+    <meta name="google-signin-client_id" content="1010270953000-l383tlip3oq53eplgnvmsn3ebs4qp8pe.apps.googleusercontent.com">
+  </head>
+
+  <body class="background">
+    <div class="container">
+      <div class="row">
+        <div class="">
+          <div class="card card-signin flex-row my-5">
+            <div class="col-lg-5 col-xl-6 mx-auto">
+              <!-- div with this class -->
+              <!-- card-img-left d-none d-md-flex -->
+              <p class="sign_in_text">Sign in</p>
+              <p class="padding_between1"></p>
+              <div class="form-login">
+                <div class="form-label-group">
+                  <input
+                    type="text"
+                    id="EmailAddresslogin"
+                    class="form-control"
+                    placeholder="Username"
+                    required
+                  />
+                  <label for="EmailAddresslogin">Email Address</label>
+                  <p class="padding_between"></p>
+
+                  <div class="form-label-group">
+                    <input
+                      type="password"
+                      id="inputPasswordlogin"
+                      class="form-control"
+                      placeholder="Password"
+                      required
+                    />
+                    <label for="inputPasswordlogin">Password</label>
+
+                    <hr />
+              <div class="user_manager_ask">
+                  <p><mark style="background-Color:yellow;">Please Choose: User, Venue manager or Health Official</mark></p>
+                  <br />
+
+                    <input type="radio" id="user_click" name="acctype2" value="User" checked="checked" />
+                    <label for="user_click">User </label><br />
+                    <input
+                      type="radio"
+                      id="Venue_click"
+                      name="acctype2"
+                      value="Venue"
+                    />
+                    <label for="Venue_click">Venue Manager</label><br />
+                    <input
+                      type="radio"
+                      id="healthoff_click"
+                      name="acctype2"
+                      value="Venue"
+                    />
+                    <label for="healthoff_click">Health Official</label>
+                </div>
+                <button
+                  class="btn btn-lg btn-primary btn-block text-uppercase login_button"
+                  type="submit"
+                  id="login_user"
+                  onclick="login();sessionID()"
+                >
+                  Login
+                </button>
+                    <p class="sign_in_text color_login">Or <br />Login with</p>
+                  </div>
+
+                  <div id="google_sign" class="g-signin2 google_sign_in_button  "  data-onsuccess="onSignIn"></div>
+
+                  <!--<button-->
+                  <!--  class="btn btn-lg btn-facebook btn-block text-uppercase"-->
+                  <!--  type="submit"-->
+                  <!--  <i class="fab fa-facebook-f mr-2">Facebook</i>-->
+                  <!--</button>-->
+                </div>
+              </div>
+            </div>
+            <div class="vl"></div>
+            <div class="card-body">
+              <h5 class="card-title text-center">Register</h5>
+              <div class="form-signin">
+                <div class="form-label-group">
+                  <input
+                    type="text"
+                    id="FirstName_login"
+                    class="form-control"
+                    placeholder="First Name"
+                    required
+                    autofocus
+                  />
+                  <label for="FirstName_login">First Name</label>
+                </div>
+                <div class="form-label-group">
+                  <input
+                    type="text"
+                    id="LastNameLogin"
+                    class="form-control"
+                    placeholder="Last Name"
+                    required
+                    autofocus
+                  />
+                  <label for="LastNameLogin">Last Name</label>
+                </div>
+                <div class="form-label-group">
+                  <input
+                    type="email"
+                    id="inputEmail"
+                    class="form-control"
+                    placeholder="Email address"
+                    required
+                  />
+                  <label for="inputEmail">Email address</label>
+                </div>
+                <div class="form-label-group">
+                  <input
+                    type="number"
+                    id="phone_number"
+                    class="form-control"
+                    placeholder="Phone number"
+                    required
+                  />
+                  <label for="phone_number">Phone number</label>
+                </div>
+                <hr />
+
+                <div class="form-label-group">
+                  <input
+                    type="password"
+                    id="inputPassword"
+                    class="form-control"
+                    placeholder="Password"
+                    required
+                  />
+                  <label for="inputPassword">Password</label>
+                </div>
+
+                <div class="form-label-group">
+                  <input
+                    type="password"
+                    id="inputConfirmPassword"
+                    class="form-control"
+                    placeholder="Password"
+                    required
+                  />
+                  <label for="inputConfirmPassword">Confirm password</label>
+                </div>
+                <div class="user_manager_ask">
+                  Are you a user or a venue manager?
+                  <br />
+
+                    <input
+                      type="radio"
+                      id="user_tick"
+                      name="accType"
+                      value="User"
+                      checked="checked"
+                    />
+                    <label for="user_tick">User </label><br />
+                    <input
+                      type="radio"
+                      id="Venue_tick"
+                      name="accType"
+                      value="Venue"
+                    />
+                    <label for="Venue_tick">Venue Manager</label>
+
+                </div>
+                <button
+                  class="btn btn-lg btn-primary btn-block text-uppercase"
+                  type="submit"
+                  onclick="registerAccount()"
+                >
+                  Register
+                </button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AJAX for adding new User or Venue to the DB -->
+    <script>
+      function registerAccount(){
+
+      //If supplied passwords match, add user to the correct database.
+      if(document.getElementById('inputPassword').value == document.getElementById('inputConfirmPassword').value)
+      {
+        //Check whether to create a user or a venue.
+        var isUser = 0;
+        var isVenue = 0;
+        if(document.getElementById('user_tick').checked)
+        {
+          isUser = 1;
+        }
+        else if(document.getElementById('Venue_tick').checked)
+        {
+          isVenue = 1;
+        }
+
+        //Object for holding account data.
+        let account = {
+          firstName: document.getElementById('FirstName_login').value,
+          lastName: document.getElementById('LastNameLogin').value,
+          email: document.getElementById('inputEmail').value,
+          phoneNum: document.getElementById('phone_number').value,
+          password: document.getElementById('inputPassword').value,
+          isUser: isUser,
+          isVenue: isVenue
+        };
+
+        var xhttp =  new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              //Reload the page once data has been put into the database (clears input fields).
+              location.reload();
+            }else if(this.readyState == 4 && this.status >= 400){
+                alert("failed");
+            }
+        };
+
+        xhttp.open("POST", "/accountRegister", true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        //Send JSON containing new account data.
+        xhttp.send(JSON.stringify(account));
+      }
+      //If passwords don't match, tell the user and do nothing more.
+      else
+      {
+        alert("Passwords do not match!");
+      }
+    }
+
+    function login(){
+
+      var user_clicked=0;
+      var venue_clicked=0;
+      var health_off_clicked=0;
+
+      if(document.getElementById('user_click').checked){
+          user_clicked=1;
+      }else if(document.getElementById('Venue_click').checked){
+          venue_clicked=1;
+      }else if(document.getElementById('healthoff_click').checked){
+          health_off_clicked=1;
+      }
+           var user= document.getElementById('EmailAddresslogin').value;
+           var pass= document.getElementById('inputPasswordlogin').value;
+
+      // Create AJAX Request
+      var xmlhttp = new XMLHttpRequest();
+
+      // Define function to run on response
+      xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+              alert("Welcome");
+              location.href = "../kyd.html";
+          } else if (this.readyState == 4 && this.status >= 400) {
+              alert("Login failed, Check again");
+          }
+      };
+      // Open connection to server & send the post data using a POST request
+      // We will cover POST requests in more detail in week 8
+      xmlhttp.open("POST", '/login', true);
+      xmlhttp.setRequestHeader("Content-type", "application/json");
+      xmlhttp.send(JSON.stringify({user:user,pass:pass,user_clicked: user_clicked,venue_clicked: venue_clicked,health_off_clicked: health_off_clicked}));
+
+    }
+
+// var googleUser = {};
+// var startApp = function() {
+//     gapi.load('auth2', function(){
+//       // Retrieve the singleton for the GoogleAuth library and set up the client.
+//       auth2 = gapi.auth2.init({
+//         client_id: '1010270953000-l383tlip3oq53eplgnvmsn3ebs4qp8pe.apps.googleusercontent.com',
+//         cookiepolicy: 'single_host_origin',
+//         // Request scopes in addition to 'profile' and 'email'
+//         //scope: 'additional_scope'
+//       });
+//       onSignIn(document.getElementById('google_sign'));
+//     });
+//   };
+
+
+// function onSignIn(googleUser) {
+//   var profile = googleUser.getBasicProfile();
+//   console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+//   console.log('Name: ' + profile.getName());
+//   console.log('Image URL: ' + profile.getImageUrl());
+//   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+//   var id_token ={token: googleUser.getAuthResponse().id_token};
+
+//       // Create AJAX Request
+//     var xmlhttp = new XMLHttpRequest();
+
+//     // Define function to run on response
+//     xmlhttp.onreadystatechange = function() {
+//         if (this.readyState == 4 && this.status == 200) {
+//             alert("Welcome "+this.responseText);
+//             location.href = "../kyd.html";
+//         } else if (this.readyState == 4 && this.status >= 400) {
+//             alert("Login failed");
+//         }
+//     };
+
+//     // Open connection to server & send the token using a POST request
+//     xmlhttp.open("POST", "/login");
+//     xmlhttp.setRequestHeader("Content-type", "application/json");
+//     xmlhttp.send(JSON.stringify(id_token));
+// }
+
+function sessionID(){
+
+    // Create AJAX Request
+    var xmlhttp = new XMLHttpRequest();
+    var user_clicked=0;
+    var venue_clicked=0;
+    var health_off_clicked = 0;
+    var email=document.getElementById('EmailAddresslogin').value;
+    if(document.getElementById('user_click').checked){
+       user_clicked=1;
+    }else if(document.getElementById('Venue_click').checked){
+       venue_clicked=1;
+    }else if(document.getElementById('healthoff_click').checked){
+       health_off_clicked=1;
+    }
+
+    // Define function to run on response
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log("done");
+
+        } else if (this.readyState == 4 && this.status >= 400) {
+            console.log("ohno");
+        }
+    };
+
+
+    // Open connection to server & send the token using a POST request
+    xmlhttp.open("POST", "/setSessionID");
+    xmlhttp.setRequestHeader("Content-type", "application/json");
+    xmlhttp.send(JSON.stringify({ email: email, Isuser: user_clicked,Isvenue: venue_clicked, Ishealth: health_off_clicked }));
+}
+  </script>
+
+  </body>
+</html>
